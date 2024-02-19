@@ -14,8 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Welcome to Lubricant Registration System!') }}
                 </div>
+
+              <div><button>Apply</button></div>
             </div>
         </div>
     </div>
