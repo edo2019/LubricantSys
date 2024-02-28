@@ -1,6 +1,10 @@
 <?php
 
+
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+
+Route::get('/', function (){
     return view('welcome');
+
 });
+
+
+
+//Route::get('/', [LubricantsController::class, 'index'])->name('lubricants');
+//Route::get('lubricants', [LubricantsController::class, 'lubricants']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/test', function () { return 'Test'; });
+ 
+Route::get('/reg', [RegController::class, 'index'])->name('reg');
+
+

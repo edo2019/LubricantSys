@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lubricants', function (Blueprint $table) {
+        Schema::create('reg_lubricants', function (Blueprint $table) {
             $table->id();
-            $table->string('lincese');
-            $table->string('block');
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lubricants');
+        Schema::dropIfExists('reg_lubricants');
     }
 };

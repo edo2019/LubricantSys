@@ -32,9 +32,10 @@
                       </div>
                       <div class="modal-body">
                         <!-- Add your options here -->
-                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#option1Modal">Register Lubricant</a>
+                        <a href='{{ __('reg') }}' class="btn btn-primary">Register Lubricant</a>
                         <a href="#" class="btn btn-secondary">View Result</a>
                         <a href="#" class="btn btn-warning">Re-Apply</a>
+                          <a href="#" class="btn btn-warning">Use Guide</a>
                       </div>
                     </div>
                   </div>
