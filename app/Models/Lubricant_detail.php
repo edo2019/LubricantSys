@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Lubricant_detail extends Model
 {
@@ -13,12 +14,16 @@ class Lubricant_detail extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'SerialNumber',
-        'CompanyLicense',
-        'LubricantName',
-        'LubricantType',
-        'LubricantPerformanceLevel',
-        'LubricantBrand',
-        'Number_Certification',
+      
+        'lubricantName',
+        'lubricantType',
+        'lubricantPerformanceLevel',
+        'lubricantBrand',
+        'number_Certification',
     ];
+
+    public function company_detail(): BelongsTo
+    {
+        return $this->belongsTo(Company_detail::class, 'license');
+    }
 }

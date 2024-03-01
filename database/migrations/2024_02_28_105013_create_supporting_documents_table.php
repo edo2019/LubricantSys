@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('supporting_documents', function (Blueprint $table) {
-            $table->id();
+            $table->increments('supporting_documents_id');
+            $table->string('number_NameOfCertification')->unique();
+            $table->string('Attachment1');
+            $table->string('Attachment2');
+            $table->string('Attachment3');
+            $table->string('Attachment4');
             $table->timestamps();
         });
     }

@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
+        
+
         Schema::create('phone_numbers', function (Blueprint $table) {
-            $table->id();
+            $table->increments('phone_id');
+            $table->integer('phone_number')->unique();
+            $table->string('altern_phone_Number')->unique();
             $table->timestamps();
         });
     }

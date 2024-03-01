@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
+    }
+    public function company_details(): Hasone
+    {
+        return $this->hasOne(Company_detail::class);
+
     }
 }

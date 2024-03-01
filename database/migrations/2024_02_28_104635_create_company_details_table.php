@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('company_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('company_delail_id');
+            $table->string('license');
+            $table->string('company_name')->unique();
+            $table->string('region');
+            $table->string('block');
+            $table->integer('address');
+            $table->integer('telephone')->unique();
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

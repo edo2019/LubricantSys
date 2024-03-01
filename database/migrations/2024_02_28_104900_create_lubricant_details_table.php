@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+     
         Schema::create('lubricant_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('lubricant_id');
+            $table->string('lubricant_Name');
+            $table->string('lubricant_Type');
+            $table->string('lubricant_Performance_Level');
+            $table->string('lubricant_Brand');
+            $table->string('number_Certification')->unique();
             $table->timestamps();
         });
     }
