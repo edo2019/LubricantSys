@@ -11,14 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
-
-        Schema::create('phone_numbers', function (Blueprint $table) {
-            $table->increments('phone_id');
-            $table->integer('phone_number')->unique();
-            $table->string('altern_phone_Number')->unique();
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -26,6 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('phone_numbers');
+        //
     }
 };

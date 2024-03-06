@@ -41,6 +41,62 @@
         </main>
     </div>
 
+
+    <script>
+      $(document).ready(function() {
+        $('#addLubricantRow').click(function() {
+          $('#lubricantTable').append(`
+            <tr>
+              <td><input type="number" class="form-control" name="SerialNumber"></td>
+              <td><input type="text" class="form-control" name="lubricant_Name"></td>
+              <td>
+                <select class="form-control" name="lubricant_Type">
+                  <option value="gearOil">Gear Oil</option>
+                  <option value="hydraulicOil">Hydraulic Oil</option>
+                  <option value="engineOil">Engine Oil</option>
+                  <option value="atf">ATF</option>
+                  <option value="transformerOil">Transformer Oil</option>
+                  <option value="other">Other</option>
+                </select>
+              </td>
+              <td><input type="text" class="form-control"name="lubricant_Performance_Level" ></td>
+              <td><input type="text" class="form-control" name="lubricant_Brand"></td>
+              <td><input type="text" class="form-control" name="number_Certification"></td>
+            </tr>
+          `);
+        });
+      });
+    </script>
+
+<script>
+
+/*$(document).ready(function () {
+    $('#submitForm').click(function () {
+        var formData = $('#myForm').serialize(); // Serialize form data
+
+        // Send form data via AJAX
+        $.ajax({
+            url: '/submit-form', // URL to your Laravel controller method
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                // Handle success response
+                console.log(response);
+                // You can redirect or show a success message here
+            },
+            error: function (xhr, status, error) {
+                // Handle error response
+                console.error(xhr.responseText);
+                // You can display an error message here
+            }
+        });
+    });
+});
+*/
+</script>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -49,30 +105,5 @@
 
 
 
-    <script>
-        $(document).ready(function() {
-          $('#addLubricantRow').click(function() {
-            $('#lubricantTable').append(`
-              <tr>
-                <td><input type="number" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td>
-                  <select class="form-control">
-                    <option value="gearOil">Gear Oil</option>
-                    <option value="hydraulicOil">Hydraulic Oil</option>
-                    <option value="engineOil">Engine Oil</option>
-                    <option value="atf">ATF</option>
-                    <option value="transformerOil">Transformer Oil</option>
-                    <option value="other">Other</option>
-                  </select>
-                </td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-              </tr>
-            `);
-          });
-        });
-      </script>
 </body>
 </html>

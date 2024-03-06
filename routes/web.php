@@ -39,4 +39,6 @@ Route::get('/test', function () { return 'Test'; });
  
 Route::get('/reg', [RegController::class, 'index'])->name('reg');
 
+Route::post('/submit-form', [RegController::class, 'submitForm'])->name('submit_form_route');
+
 
