@@ -42,3 +42,11 @@ Route::get('/reg', [RegController::class, 'index'])->name('reg');
 Route::post('/submit-form', [RegController::class, 'submitForm'])->name('submit_form_route');
 
 
+Route::get('/company', [RegController::class, 'company'])->name('company');
+
+Route::post('/store', [RegController::class, 'store'])->name('store');
+
+
+Route::get('/success', function () {
+    return view('success'); 
+  })->name('success_route');

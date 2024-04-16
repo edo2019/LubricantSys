@@ -2,89 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Supporting_documents;
 use Illuminate\Http\Request;
 
 class RegController extends Controller
 {
+//company
+ public function company(Request $request)
+ {
+
+    return view('company');
+ }
+
+ public function store(Request $request)
+{
+  // Validate form data (optional)
+  $validatedData = $request->validate([
+    'company_Name' => 'required|string',
+    'license' => 'required|in:licensed,notLicensed',
+    'region' => 'required|string',
+    'block' => 'required|string',
+    'address' => 'required|string',
+    'telephone' => 'required|string',
+    'email' => 'required|string'
+    
+  ]);
+
+  // Create a new company instance (using model if defined)
+  $company = new Company;
+  $company->company_name = $validatedData['company_Name'];
+  $company->license = $validatedData['license'];
+  $company->region = $validatedData['region'];
+  $company->region = $validatedData['block'];
+  $company->region = $validatedData['address'];
+  $company->region = $validatedData['telephone'];
+  $company->region = $validatedData['email'];
+  // ... other fields
+
+  // Save the company to the database
+  $company->save();
+
+  // Handle success or error (e.g., redirect, flash message)
+  return redirect()->route('success_route'); // Replace with appropriate route
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//supporting documents
     public function index(Request $request)
     {
         return view('reg');
     }
-/*
-    public function submitForm(Request $request)
-    {
-        // Validate form data
-        $validatedData = $request->validate([
-            'number_NameOfCertification1' => 'required',
-            'number_NameOfCertification2' => 'required',
-            'number_NameOfCertification3' => 'required',
-            'number_NameOfCertification4' => 'required',
-            'Attachment1' => 'required|file',
-            'Attachment2' => 'required|file',
-            'Attachment3' => 'required|file',
-            'Attachment4' => 'required|file',
-        ]);
-
-        // Save uploaded files
-        $attachments = [];
-        foreach (['Attachment1', 'Attachment2', 'Attachment3', 'Attachment4'] as $field) {
-            if ($request->hasFile($field)) {
-                $file = $request->file($field);
-                $path = $file->store('attachments');
-                $attachments[$field] = $path;
-            }
-        }
-
-        // Create a new Supporting_documents instance with the validated data
-        $supporting_documents = Supporting_documents::create([
-            'number_NameOfCertification1' => $validatedData['number_NameOfCertification1'],
-            'number_NameOfCertification2' => $validatedData['number_NameOfCertification2'],
-            'number_NameOfCertification3' => $validatedData['number_NameOfCertification3'],
-            'number_NameOfCertification4' => $validatedData['number_NameOfCertification4'],
-            'Attachment1' => $attachments['Attachment1'] ?? null,
-            'Attachment2' => $attachments['Attachment2'] ?? null,
-            'Attachment3' => $attachments['Attachment3'] ?? null,
-            'Attachment4' => $attachments['Attachment4'] ?? null,
-        ]);
-
-        // Return success response
-        return redirect()->back()->with('success', 'Form submitted successfully!');
-    }
-    
-
-    public function submitForm(Request $request)
-    {
-      //dd($request->all());
-
-        $validatedData = $request->validate([
-            'number_NameOfCertification' => 'required|string',
-            'Attachment' => 'required|file|mimes:pdf,docx,jpeg,png,jpg|max:2048', // Adjust validation rules as needed
-          
-        ]);
-    
-        $documents = [];
-         foreach ($request->except(['_token']) as $key => $value) {
-        if (str_contains($key, 'Attachment')) {
-            $fileName = time() . '.' . $request->file($key)->getClientOriginalExtension();
-            $request->file($key)->storeAs('public/uploads', $fileName);
-            $documents[] = [
-                'number' => str_replace('Attachment', '', $key), // Updated key
-                'name' => $request->input('number_NameOfCertification' . str_replace('attachment', '', $key)), // Updated input name
-                'attachment_path' => 'storage/uploads/' . $fileName,
-            ];
-        }
-    }
-
-    // Now, you can save the documents to the database
-    foreach ($documents as $document) {
-        Supporting_documents::create($document);
-    }
-    
-        return back()->with('success', 'Documents submitted successfully!');
-    }
-    */
-
     
         public function submitForm(Request $request)
         {
