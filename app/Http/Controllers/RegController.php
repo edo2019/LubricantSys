@@ -47,19 +47,6 @@ class RegController extends Controller
   return redirect()->route('success_route'); // Replace with appropriate route
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //supporting documents
     public function index(Request $request)
     {
